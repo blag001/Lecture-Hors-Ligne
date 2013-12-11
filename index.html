@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" >
+<head>
+	<!-- code by @blag001 [blag@rakshata.com], do not use without permission -->
+	<title>Lecture hors-ligne</title>
+	<script type="text/javascript" >
+		var i = 1;
+		function use_clavier(int_key_code)
+		{
+			if((int_key_code == 37 || int_key_code == 81) && i > 1){
+				i= i-1;
+				var Npage = new Image();
+				Npage.src = "img/"+i+'.jpg';
+
+				Npage.onload = function() {
+					document.getElementById('lecteur').style.height = Npage.height+"px";
+					document.getElementById('lecteur').style.width = Npage.width+"px";
+					document.getElementById('lecteur').style.backgroundImage= "url('img/"+i+".jpg')";
+					window.scrollTo(0,0);
+				};
+			}
+			if(int_key_code == 39 || int_key_code == 68 ){
+				i= i+1;
+				var Npage = new Image();
+				Npage.src = "img/"+i+'.jpg';
+
+				Npage.onload = function() {
+					document.getElementById('lecteur').style.height = Npage.height+"px";
+					document.getElementById('lecteur').style.width = Npage.width+"px";
+					document.getElementById('lecteur').style.backgroundImage= "url('img/"+i+".jpg')";
+					window.scrollTo(0,0);
+
+					var preLpage = new Image();
+					preLpage.src = "img/"+(i+1)+'.jpg';
+					preLpage.onload = function() {};
+				};
+
+				Npage.onerror = function() {
+					i = i-1;
+				};
+			}
+		}
+		// -->
+	</script>
+	<style type="text/css">
+		a {
+			display: block;
+			margin: auto;
+		}
+	</style>
+</head>
+<body onkeyup="use_clavier(event.keyCode);" style="background-color:#000">
+	<a id="lecteur" href="#" onclick="use_clavier(39); return false;"></a>
+
+	<script type="text/javascript" >
+		var page = new Image();
+		page.src = "img/"+'1.jpg';
+
+		page.onload = function() {
+			document.getElementById('lecteur').style.height = page.height+"px";
+			document.getElementById('lecteur').style.width = page.width+"px";};
+
+		document.getElementById('lecteur').style.backgroundImage = "url('img/1.jpg')";
+	// -->
+	</script>	
+</body>
+</html>
