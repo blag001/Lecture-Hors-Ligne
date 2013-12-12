@@ -1,12 +1,26 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" >
 <head>
-	<!-- code by @blag001 [blag@rakshata.com], do not use without permission -->
+	<!--
+	  - Do not use this code without permission
+	  - @author @blag001 <blag@rakshata.com>
+	  -->
 	<title>Lecture hors-ligne</title>
 	<script type="text/javascript" >
 		var i = 1;
+		/**
+		 * gere les event de touche pour declancher les changement de page
+		 * @param  {int} int_key_code valeur de la touche enfoncee
+		 * @return {void}              realise la maj des info sans return
+		 */
 		function use_clavier(int_key_code)
 		{
+			/**
+			 * si la keyMap est la fleche gauche
+			 * et si on est a la page 2 et plus
+			 * on revient d'une page
+			 * @type {int}
+			 */
 			if((int_key_code == 37 || int_key_code == 81) && i > 1){
 				i= i-1;
 				var Npage = new Image();
@@ -19,6 +33,12 @@
 					window.scrollTo(0,0);
 				};
 			}
+			/**
+			 * si la keyMap est fleche droite
+			 * on lance l'affichage de la suite
+			 * et on capture l'erreur si pas de page
+			 * @type {int}
+			 */
 			if(int_key_code == 39 || int_key_code == 68 ){
 				i= i+1;
 				var Npage = new Image();
@@ -56,12 +76,16 @@
 		var page = new Image();
 		page.src = "img/"+'1.jpg';
 
+		/**
+		 * on charge la premiere page
+		 * @return {void} change directement dans le DOM
+		 */
 		page.onload = function() {
 			document.getElementById('lecteur').style.height = page.height+"px";
 			document.getElementById('lecteur').style.width = page.width+"px";};
 
 		document.getElementById('lecteur').style.backgroundImage = "url('img/1.jpg')";
 	// -->
-	</script>	
+	</script>
 </body>
 </html>
